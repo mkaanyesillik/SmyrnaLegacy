@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SmyrnaLegacy</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="starter-template.css" rel="stylesheet">
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        #map {
+            height: 100%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {margin:0;}
+        .navbar-inverse {
+    background-color: #e9d284;
+    border-color: #e9d284;
+        }
+        .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
+    color: #000;
+    background-color: #fff;
+      }
+      .navbar-inverse .navbar-nav > li > a {
+    color: #000;
+}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">SmyrnaLegacy</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+                <li><a href="index.html">Tüm Harita</a></li>
+                <li><a href="oren.html">Ören Yerleri Harita</a></li>
+                <li><a href="muze.html">Müze Harita</a></li>
+                <li><a href="liste.html">Tüm Liste</a></li>
+                <li class="active"><a href="orenliste.html">Ören Yerleri Listesi</a></li>
+                <li><a href="muzeliste.html">Müze Listesi</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container" style="padding-top:75px">
+            <div class="panel-group" id="accordion">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">İzmir Arkeoloji Müzesi</a>
+                  </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                  <div class="panel-body">İzmir Arkeoloji Müzesi</div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Efes Arkeoloji Müzesi</a>
+                  </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                  <div class="panel-body">Efes Arkeoloji Müzesi</div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Bergama Müzesi</a>
+                  </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                  <div class="panel-body">Bergama Müzesi</div>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Arkeoloji ve Etnografya Müzesi</a>
+                      </h4>
+                    </div>
+                    <div id="collapse4" class="panel-collapse collapse">
+                      <div class="panel-body">Arkeoloji ve Etnografya Müzesi</div>
+                    </div>
+                  </div>
+
+                  <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Tarih ve Sanat Müzesi</a>
+                          </h4>
+                        </div>
+                        <div id="collapse5" class="panel-collapse collapse">
+                          <div class="panel-body">Tarih ve Sanat Müzesi</div>
+                        </div>
+                      </div>
+    
+                      <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Çeşme Müzesi</a>
+                              </h4>
+                            </div>
+                            <div id="collapse6" class="panel-collapse collapse">
+                              <div class="panel-body">Çeşme Müzesi</div>
+                            </div>
+                          </div>
+        
+                          <div class="panel panel-default">
+                                <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">Deniz Müzesi</a>
+                                  </h4>
+                                </div>
+                                <div id="collapse7" class="panel-collapse collapse">
+                                  <div class="panel-body">Deniz Müzesi</div>
+                                </div>
+                              </div>
+            
+                              <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                      <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">Arkas Deniz Tarihi Merkezi</a>
+                                      </h4>
+                                    </div>
+                                    <div id="collapse8" class="panel-collapse collapse">
+                                      <div class="panel-body">Arkas Deniz Tarihi Merkezi</div>
+                                    </div>
+                                  </div>
+                                  <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                          <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">Erdoğan Özgörkey Otomobil ve Bilim Müzesi</a>
+                                          </h4>
+                                        </div>
+                                        <div id="collapse9" class="panel-collapse collapse">
+                                          <div class="panel-body">Erdoğan Özgörkey Otomobil ve Bilim Müzesi</div>
+                                        </div>
+                                      </div>
+                                      <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                              <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse10">Çamlık Buharlı Lokomotif Müzesi</a>
+                                              </h4>
+                                            </div>
+                                            <div id="collapse10" class="panel-collapse collapse">
+                                              <div class="panel-body">Çamlık Buharlı Lokomotif Müzesi</div>
+                                            </div>
+                                          </div>
+            </div> 
+          </div>
+  </body>
+</html>

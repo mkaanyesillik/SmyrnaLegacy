@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SmyrnaLegacy</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="starter-template.css" rel="stylesheet">
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+    <style>
+        #map {
+            height: 100%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {margin:0;}
+        .navbar-inverse {
+    background-color: #e9d284;
+    border-color: #e9d284;
+        }
+        .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
+    color: #000;
+    background-color: #fff;
+      }
+      .navbar-inverse .navbar-nav > li > a {
+    color: #000;
+}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">SmyrnaLegacy</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Tüm Harita</a></li>
+            <li class="active"><a href="oren.html">Ören Yerleri Harita</a></li>
+            <li><a href="muze.html">Müze Harita</a></li>
+            <li><a href="liste.html">Tüm Liste</a></li>
+            <li><a href="orenliste.html">Ören Yerleri Listesi</a></li>
+            <li><a href="muzeliste.html">Müze Listesi</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="map" class="genel"></div>
+
+    <script src="ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+            var oren = [
+       
+        ['İzmir Tarımsal Araştırma Enstitüsü Müdürlüğü',38.5960341,27.0372643],
+        ['Pergamon Antik Kenti',39.132366,27.181352],
+        ['Smyrna Agora Antik Kent',38.407512,27.0613195],
+        ['Metropolis Antik Tiyatro',38.4077787,26.8161462],
+        ['Smyrna Bayraklı Höyüğü',38.4634242,27.1676255],
+        ['Yeşilova Höyüğü',38.4408704,27.2113858],
+        ['Yassıtepe Höyüğü',38.3978623,27.0710726],
+        ['Ulucak Höyük',38.4667824,27.3499063],
+        ['Liman Tepe Kazı Alanı',38.3623012,26.7736663],
+        ['Bağlararası Kazı Alanı',38.319587,26.3026402],
+        ['Klazomenai Kazı Alanı',38.3727293,26.7737438],
+        ['Panaztepe',38.5178608,26.8946079],
+        ['Nif (Olympos) Dağı Kazı Evi',38.3088926,27.3905402],
+        ['Phokaia',38.6700821,26.750977],
+        ['Kyme',38.791952,26.9255473],
+        ['Erythrai',38.3812442,26.4757653],
+        ['Teos Antik Kenti',38.2779016,26.774653],
+        ['Claros',38.2778331,26.3542701],
+        ['İzmir Saat Kulesi',38.4188941,27.1264621],
+        ['Asansör',38.4085824,27.1153611],
+        ['Tarihi Havagazı Fabrikası Kültür Merkezi',38.4403082,27.1497593],
+        ['Konak pier',38.42424,27.1264672],
+        ['Kızlarağası Hanı',38.4213832,27.1307599],
+        ['Hisar Cami',38.4215582,27.1313562],
+        ['Kadifekale',38.4000159,27.1412452],
+        ['St. John s Catholic Cathedral İzmir Aziz Yuhanna Katolik Katedrali',38.4286787,27.1374763],
+        ['birgi ulu camii',38.2568475,28.064988],
+        ['meryem ana evi',37.9124057,27.3305685],
+        ['Beth-İsrael Sinagogu',38.4091979,27.1140375],
+        ['Karantina Adası',38.3739049,26.776523]
+        ];
+            
+            function initMap() {
+                var myLatLng = {lat: 38.4173415, lng: 26.7995313};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 10,
+                    center: myLatLng
+                    });
+                var count=0;
+                for (count = 0; count < oren.length; count++) {  
+                    var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(oren[count][1], oren[count][2]),
+                        map: map
+                        });
+                    marker.info = new google.maps.InfoWindow({
+                        content: oren [count][0]
+                        });
+                    google.maps.event.addListener(marker, 'click', function() {  
+                        var marker_map = this.getMap();
+                        this.info.open(marker_map, this);
+                        });
+                }
+            }
+            function muze() {
+                var myLatLng = {lat: 38.4173415, lng: 26.7995313};
+                var map = new google.maps.Map(document.getElementById('muze'), {
+                    zoom: 10,
+                    center: myLatLng
+                    });
+                var count=0;
+                for (count = 0; count < muze.length; count++) {  
+                    var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(muze[count][1], muze[count][2]),
+                        map: map
+                        });
+                    marker.info = new google.maps.InfoWindow({
+                        content: muze [count][0]
+                        });
+                    google.maps.event.addListener(marker, 'click', function() {  
+                        var marker_map = this.getMap();
+                        this.info.open(marker_map, this);
+                        });
+                }
+            }
+            </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRg2yT4a2bA_FFNtCLpr9yPDjoxwyg6A&callback=initMap">
+        </script>
+  </body>
+</html>

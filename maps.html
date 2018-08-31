@@ -1,0 +1,213 @@
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Smyrna Legacy</title>
+    <style>
+    #map {
+        height: 100%;
+    }
+    #muze {
+        height: 100%;
+    }
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    body {margin:0;}
+
+.navbar {
+  overflow: hidden;
+  background-color: #e9d284;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  margin-left:7%;
+  display: block;
+  color: #000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #f1f1f1;
+  color: black;
+}
+
+.navbar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.main {
+  padding: 16px;
+  margin-bottom: 30px;
+}
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="muze"></div>
+    <script>
+    var tumharita = [
+['İzmir Arkeoloji Müzesi', 38.4146212,27.1258416],
+['Efes Arkeoloji Müzesi',37.9484197,27.3658665],
+['Bergama Müzesi',39.1167084,27.1735024],
+['Arkeoloji ve Etnografya Müzesi',38.4141027,27.126217],
+['Tarih ve Sanat Müzesi',38.4275622,27.1404732],
+['Çeşme Müzesi',38.3236931,26.3009057],
+['Deniz Müzesi',38.4121469,27.0305691],
+['Arkas Deniz Tarihi Merkezi',38.4633464,27.217963],
+['Erdoğan Özgörkey Otomobil ve Bilim Müzesi',38.2016493,27.3474038],
+['Çamlık Buharlı Lokomotif Müzesi',37.8851093,27.3785191],
+['İzmir Kültür Sanat Ve Eğitim Müzesi',38.4376352,27.1452393],
+['Arkas Sanat Merkezi',38.4320241,27.1346291],
+['3. Bölge Müze ve Sanat Galerisi',38.4384486,27.1451674],
+['İzmir Bostanlı Güzel Sanatlar Parkı Açıkhava Arkeoloji Müzesi',38.4552246,27.0961952],
+['Ticaret Tarihi Müzesi',38.4316992,27.1343819],
+['Tire Müzesi',38.0867942,27.7289998],
+['Tire Kent Müzesi',38.0868026,27.7289998],
+['ödemiş Müzesi',38.2507285,28.0561998],
+['Odemis Kent Arsivi Muzesi',38.2270278,27.9676334],
+['Selçuk Efes Kent Belleği',37.9507912,27.3688473],
+['Atatürk Müzesi',38.4248787,27.1170132],
+['Latife Hanım Köşkü ve Anı Evi',38.4583569,27.1112863],
+['Uşakizade Köşkü',38.4031331,27.0965323],
+['Çakırağa Konakları',38.2560666,28.06345],
+['rasime şeyhoğlu anı evi',38.466829,27.2181163],
+['Konak Belediyesi Radyo ve Demokrasi Müzesi',38.4204389,27.1416841],
+['Karşıyaka Belediyesi Hamza Rüstem Fotoğraf Evi',38.4796231,27.0409327],
+['E.Ü kağıt ve kitap sanatları müzesi',38.4620489,27.2164169],
+['Karşıyaka Belediyesi Bilim Merkezi',38.4757602,27.0782193],
+['17 ağustos anı evi',38.4583527,27.1112863],
+['İzmir Mask Müzesi',38.4357734,27.1399874],
+['Neşe ve Karikatür Müzesi',38.4378961,27.1416331],
+['Umran Baradan Oyun Ve Oyuncak Muzesi',38.4134901,27.1247855],
+['İzmir Kadın Müzesi',38.4210372,27.1400703],
+['İzmir Tarımsal Araştırma Enstitüsü Müdürlüğü',38.5960341,27.0372643],
+['Efes Arkeoloji Müzesi',37.9484197,27.3658665],
+['Pergamon Antik Kenti',39.132366,27.181352],
+['Smyrna Agora Antik Kent',38.407512,27.0613195],
+['Metropolis Antik Tiyatro',38.4077787,26.8161462],
+['Smyrna Bayraklı Höyüğü',38.4634242,27.1676255],
+['Yeşilova Höyüğü',38.4408704,27.2113858],
+['Yassıtepe Höyüğü',38.3978623,27.0710726],
+['Ulucak Höyük',38.4667824,27.3499063],
+['Liman Tepe Kazı Alanı',38.3623012,26.7736663],
+['Bağlararası Kazı Alanı',38.319587,26.3026402],
+['Klazomenai Kazı Alanı',38.3727293,26.7737438],
+['Panaztepe',38.5178608,26.8946079],
+['Nif (Olympos) Dağı Kazı Evi',38.3088926,27.3905402],
+['Phokaia',38.6700821,26.750977],
+['Kyme',38.791952,26.9255473],
+['Erythrai',38.3812442,26.4757653],
+['Teos Antik Kenti',38.2779016,26.774653],
+['Claros',38.2778331,26.3542701],
+['İzmir Saat Kulesi',38.4188941,27.1264621],
+['Asansör',38.4085824,27.1153611],
+['Tarihi Havagazı Fabrikası Kültür Merkezi',38.4403082,27.1497593],
+['Konak pier',38.42424,27.1264672],
+['Kızlarağası Hanı',38.4213832,27.1307599],
+['Hisar Cami',38.4215582,27.1313562],
+['Kadifekale',38.4000159,27.1412452],
+['St. John s Catholic Cathedral İzmir Aziz Yuhanna Katolik Katedrali',38.4286787,27.1374763],
+['birgi ulu camii',38.2568475,28.064988],
+['meryem ana evi',37.9124057,27.3305685],
+['Beth-İsrael Sinagogu',38.4091979,27.1140375],
+['Karantina Adası',38.3739049,26.776523]
+];
+var muze = [
+['İzmir Arkeoloji Müzesi', 38.4146212,27.1258416],
+['Efes Arkeoloji Müzesi',37.9484197,27.3658665],
+['Bergama Müzesi',39.1167084,27.1735024],
+['Arkeoloji ve Etnografya Müzesi',38.4141027,27.126217],
+['Tarih ve Sanat Müzesi',38.4275622,27.1404732],
+['Çeşme Müzesi',38.3236931,26.3009057],
+['Deniz Müzesi',38.4121469,27.0305691],
+['Arkas Deniz Tarihi Merkezi',38.4633464,27.217963],
+['Erdoğan Özgörkey Otomobil ve Bilim Müzesi',38.2016493,27.3474038],
+['Çamlık Buharlı Lokomotif Müzesi',37.8851093,27.3785191],
+['İzmir Kültür Sanat Ve Eğitim Müzesi',38.4376352,27.1452393],
+['Arkas Sanat Merkezi',38.4320241,27.1346291],
+['3. Bölge Müze ve Sanat Galerisi',38.4384486,27.1451674],
+['İzmir Bostanlı Güzel Sanatlar Parkı Açıkhava Arkeoloji Müzesi',38.4552246,27.0961952],
+['Ticaret Tarihi Müzesi',38.4316992,27.1343819],
+['Tire Müzesi',38.0867942,27.7289998],
+['Tire Kent Müzesi',38.0868026,27.7289998],
+['ödemiş Müzesi',38.2507285,28.0561998],
+['Odemis Kent Arsivi Muzesi',38.2270278,27.9676334],
+['Selçuk Efes Kent Belleği',37.9507912,27.3688473],
+['Atatürk Müzesi',38.4248787,27.1170132],
+['Latife Hanım Köşkü ve Anı Evi',38.4583569,27.1112863],
+['Uşakizade Köşkü',38.4031331,27.0965323],
+['Çakırağa Konakları',38.2560666,28.06345],
+['rasime şeyhoğlu anı evi',38.466829,27.2181163],
+['Konak Belediyesi Radyo ve Demokrasi Müzesi',38.4204389,27.1416841],
+['Karşıyaka Belediyesi Hamza Rüstem Fotoğraf Evi',38.4796231,27.0409327],
+['E.Ü kağıt ve kitap sanatları müzesi',38.4620489,27.2164169],
+['Karşıyaka Belediyesi Bilim Merkezi',38.4757602,27.0782193],
+['17 ağustos anı evi',38.4583527,27.1112863],
+['İzmir Mask Müzesi',38.4357734,27.1399874],
+['Neşe ve Karikatür Müzesi',38.4378961,27.1416331],
+['Umran Baradan Oyun Ve Oyuncak Muzesi',38.4134901,27.1247855],
+['İzmir Kadın Müzesi',38.4210372,27.1400703],
+['İzmir Tarımsal Araştırma Enstitüsü Müdürlüğü',38.5960341,27.0372643],
+['Efes Arkeoloji Müzesi',37.9484197,27.3658665],
+];
+
+    
+    function initMap() {
+        var myLatLng = {lat: 38.4173415, lng: 26.7995313};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: myLatLng
+            });
+        var count=0;
+        for (count = 0; count < tumharita.length; count++) {  
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(tumharita[count][1], tumharita[count][2]),
+                map: map
+                });
+            marker.info = new google.maps.InfoWindow({
+                content: tumharita [count][0]
+                });
+            google.maps.event.addListener(marker, 'click', function() {  
+                var marker_map = this.getMap();
+                this.info.open(marker_map, this);
+                });
+        }
+    }
+    function muze() {
+        var myLatLng = {lat: 38.4173415, lng: 26.7995313};
+        var map = new google.maps.Map(document.getElementById('muze'), {
+            zoom: 10,
+            center: myLatLng
+            });
+        var count=0;
+        for (count = 0; count < muze.length; count++) {  
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(muze[count][1], muze[count][2]),
+                map: map
+                });
+            marker.info = new google.maps.InfoWindow({
+                content: muze [count][0]
+                });
+            google.maps.event.addListener(marker, 'click', function() {  
+                var marker_map = this.getMap();
+                this.info.open(marker_map, this);
+                });
+        }
+    }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgRg2yT4a2bA_FFNtCLpr9yPDjoxwyg6A&callback=initMap">
+    </script>
+</body>
+</html>
